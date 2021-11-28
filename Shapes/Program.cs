@@ -29,10 +29,9 @@ namespace Shapes
     {
         public abstract void Drawing();
     }
-
     class Triangle : Draw
     {
-        uint _size { get; set; }
+        uint _size { get; }
         public override void Drawing()
         {
             Console.WriteLine($"Triangle: size {_size}");
@@ -44,8 +43,8 @@ namespace Shapes
     }
     class Rectangle : Draw
     {
-        uint _sizeX { get; set; }
-        uint _sizeY { get; set; }
+        uint _sizeX { get; }
+        uint _sizeY { get; }
         public override void Drawing()
         {
             Console.WriteLine($"Rectangle: sizes X={_sizeX}, Y={_sizeY}");
@@ -58,7 +57,7 @@ namespace Shapes
     }
     class Square : Draw
     {
-        uint _size { get; set; }
+        uint _size { get; }
         public override void Drawing()
         {
             Console.WriteLine($"Square: size {_size}");
@@ -68,10 +67,9 @@ namespace Shapes
             _size = size;
         }
     }
-
     class Shape : Draw
     {
-        Draw _draw { get; set; }
+        Draw _draw { get; }        
         public Shape(Draw draw)
         {
             _draw = draw;
