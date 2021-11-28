@@ -6,18 +6,18 @@ namespace Shapes
     class Program
     {
         static void Main(string[] args)
-        {            
-            List<IDraw> draws = new List<IDraw> { new Triangle(10),
-            new Rectangle(30, 40),
-            new Square(15)
+        {   
+            var draws = new List<IDraw>
+            {
+                new Shape(new Triangle(10)),
+                new Shape(new Rectangle(30, 40)),
+                new Shape(new Square(15))
             };
 
             foreach (var draw in draws)
             {
                 draw.Drawing();
-            }
-            
-            Console.WriteLine();
+            }            
         }
     }
 
@@ -80,5 +80,5 @@ namespace Shapes
         {
             _draw.Drawing();
         }
-    }
+    }    
 }
