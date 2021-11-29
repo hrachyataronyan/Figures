@@ -7,32 +7,46 @@ namespace Shapes
     {
         static void Main(string[] args)
         {   
-            var draws = new List<IDraw>
+            var shapes = new List<Shape>
             {
-                new Shape(new Triangle(10)),
-                new Shape(new Rectangle(30, 40)),
-                new Shape(new Square(15))
+                new Triangle(10),
+                new Rectangle(30, 40),
+                new Square(15)
             };
 
-            foreach (var draw in draws)
+            foreach (var shape in shapes)
             {
-                draw.Drawing();
-            }            
+                shape.Draw();
+            }
+
+            Console.WriteLine("---===Second logic===---");
+
+            var drows = new List<IDrawable>
+            {
+                new Draws(new Triangle(10)),
+                new Draws(new Rectangle(30, 40)),
+                new Draws(new Square(15))                
+            };
+
+            foreach (var drow in drows)
+            {
+                drow.Draw();
+            }
         }
     }
 
-    interface IDraw
+    interface IDrawable
     {
-        void Drawing();
+        void Draw();
     }
-    abstract class Draw : IDraw
+    abstract class Shape : IDrawable
     {
-        public abstract void Drawing();
+        public abstract void Draw();
     }
-    class Triangle : Draw
+    class Triangle : Shape
     {
         uint _size { get; }
-        public override void Drawing()
+        public override void Draw()
         {
             Console.WriteLine($"Triangle: size {_size}");
         }
@@ -41,11 +55,11 @@ namespace Shapes
             _size = size;
         }
     }
-    class Rectangle : Draw
+    class Rectangle : Shape
     {
         uint _sizeX { get; }
         uint _sizeY { get; }
-        public override void Drawing()
+        public override void Draw()
         {
             Console.WriteLine($"Rectangle: sizes X={_sizeX}, Y={_sizeY}");
         }
@@ -55,10 +69,10 @@ namespace Shapes
             _sizeY = sizeY;
         }
     }
-    class Square : Draw
+    class Square : Shape
     {
         uint _size { get; }
-        public override void Drawing()
+        public override void Draw()
         {
             Console.WriteLine($"Square: size {_size}");
         }
@@ -67,16 +81,16 @@ namespace Shapes
             _size = size;
         }
     }
-    class Shape : Draw
+    class Draws : Shape
     {
-        Draw _draw { get; }        
-        public Shape(Draw draw)
+        Shape _shape { get; }
+        public Draws(Shape shape)
         {
-            _draw = draw;
+            _shape = shape;
         }
-        public override void Drawing()
+        public override void Draw()
         {
-            _draw.Drawing();
+            _shape.Draw();
         }
-    }    
+    }
 }
