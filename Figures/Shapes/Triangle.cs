@@ -1,7 +1,7 @@
-﻿using Shapes.Colors;
+﻿using Figures.Colors;
 using System;
 
-namespace Shapes.Figures
+namespace Figures.Shapes
 {
     class Triangle : Shape
     {
@@ -14,7 +14,6 @@ namespace Shapes.Figures
 
         public Triangle(uint size, IColorable _color)
         {
-            _color.SetColor();
             _size = size;
         }
     }
